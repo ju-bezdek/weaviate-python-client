@@ -12,3 +12,4 @@ pytest-profiling==1.7.0
 coverage==6.5.0
 wheel
 pre-commit
+authlib

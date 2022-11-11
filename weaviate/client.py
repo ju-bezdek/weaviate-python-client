@@ -3,21 +3,21 @@ Client class definition.
 """
 import warnings
 from numbers import Real
-from typing import Optional, Tuple, Union
+from typing import Optional, Tuple, Union, Any
 
-from .auth import AuthCredentials
+# from .auth import AuthCredentials
 from .backup import Backup
 from .batch import Batch
 from .classification import Classification
+from .cluster import Cluster
+from .config import ClientConfig
 from .connect import Connection
 from .contextionary import Contextionary
 from .data import DataObject
+from .error_msgs import CLIENT_V14_W
 from .exceptions import UnexpectedStatusCodeException, RequestsConnectionError
 from .gql import Query
-from .cluster import Cluster
 from .schema import Schema
-from .version import __version__
-from .error_msgs import CLIENT_V14_W
 
 
 class Client:
@@ -48,7 +48,8 @@ class Client:
     def __init__(
         self,
         url: str,
-        auth_client_secret: Optional[AuthCredentials] = None,
+        client_config: ClientConfig,
+        auth_client_secret: Optional[Any] = None,
         timeout_config: Union[Tuple[Real, Real], Real] = (10, 60),
         proxies: Union[dict, str, None] = None,
         trust_env: bool = False,
@@ -124,6 +125,7 @@ class Client:
             proxies=proxies,
             trust_env=trust_env,
             additional_headers=additional_headers,
+            client_config=client_config,
         )
         self.classification = Classification(self._connection)
         self.schema = Schema(self._connection)

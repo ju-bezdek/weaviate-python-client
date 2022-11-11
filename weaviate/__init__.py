@@ -34,20 +34,23 @@ __version__ : str
 
 __all__ = [
     "Client",
-    "AuthClientCredentials",
-    "AuthClientPassword",
+    # "AuthClientCredentials",
+    # "AuthClientPassword",
     "UnexpectedStatusCodeException",
     "ObjectAlreadyExistsException",
     "AuthenticationFailedException",
     "SchemaValidationException",
+    "ClientConfig",
+    "MissingScopeException",
 ]
 
 import sys
-from .version import __version__
-from .exceptions import *
-from .auth import AuthClientCredentials, AuthClientPassword
-from .client import Client
 
+# from .auth import AuthClientCredentials, AuthClientPassword
+from .client import Client
+from .config import ClientConfig, AuthOIDCUserClientFlowConfig
+from .exceptions import *
+from .version import __version__
 
 if not sys.warnoptions:
     import warnings

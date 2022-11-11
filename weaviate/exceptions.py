@@ -2,7 +2,6 @@
 Weaviate Exceptions.
 """
 # Import requests ConnectionError as weaviate.ConnectionError to overwrite buildins connection error
-from requests.exceptions import ConnectionError as RequestsConnectionError
 from requests import Response
 
 
@@ -89,3 +88,11 @@ class EmptyResponseException(WeaviateBaseError):
     """
     Occurs when an HTTP request unexpectedly returns an empty response
     """
+
+
+class MissingScopeException(WeaviateBaseError):
+    """Scope was not provided with OIDC client credential flow."""
+
+
+class RequestsConnectionError(WeaviateBaseError):
+    """Scope was not provided with OIDC client credential flow."""
