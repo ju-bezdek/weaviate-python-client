@@ -10,7 +10,7 @@ services:
       - --scheme
       - http
       - --write-timeout=600s
-    image: semitechnologies/weaviate:preview-add-non-ref-properties-to-grpc-634eead
+    image: semitechnologies/weaviate:preview-add-non-ref-properties-to-grpc-6c26a94
     ports:
       - "8080:8080"
       - "50051:50051"
